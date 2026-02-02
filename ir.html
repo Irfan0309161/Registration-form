@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" content="my web">
+    <title>GPCET</title>
+    <style>
+      *{
+        box-sizing: border-box;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+      body{
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(to bottom,pink,aqua);
+        align-items: center;
+        justify-items: center;
+      }
+      .form-container{
+        background-color:transparent;
+        width: 450px;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px black;
+      }
+      .form-container h1{
+        text-align: center;
+        margin-bottom: 20px;
+        text-decoration: underline;
+        color:darkblue;
+      }
+      label{
+        display:block;
+        margin-top: 12px;
+        font-weight:bolder;
+        font-size: 18px;
+      }
+      input[type="text"],
+      input[type="date"],
+      input[type="password"]{
+        width:100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 4cm;
+      }
+      .Gender{
+        margin-top: 8px;
+      }
+      .Gender label{
+        display: inline-flex;
+            margin-right: 20px;
+            font-weight:300px;
+      }
+      .submit-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: 15cm;
+            border-radius: 4cm;
+            color: white;
+            font-size: 18px;
+            cursor:pointer;
+        }
+        .submit-btn:hover {
+            background-color: #05f311;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Welcome To GPCET!</h1>
+      <form id="studentForm">
+        <label for="FirstName">First Name:</label>
+        <input type="text" name="FirstName" placeholder="Enter First Name" required autofocus>
+        <label for="LastName">Last Name:</label>
+        <input type="text" name="LastName="Enter Last Name" required autofocus>
+        <label for="RollNumber">Roll Number:</label>
+        <input type="text" name="RollNumber" placeholder="Enter RollNumber" required autofocus>
+        <label for="Gender">Gender:</label>
+        <div class="Gender" required>
+          <label><input type="radio" name="Gender" value="Male">Male</label>
+          <label><input type="radio" name="Gender" value="Female">Female</label>
+          <label><input type="radio" name="Gender" value="Other">Other</label>
+        </div>
+        <label>Date of Birth:</label>
+        <input type="date" name="DOB" required>
+        <label>Password:</label>
+        <input type="password" name="PassWord" placeholder="Enter your Password" required autofocus>
+        <button class="submit-btn">Submit</button>
+      </form>
+    </div>
+    <script>
+    const form = document.getElementById("studentForm");
+    const output = document.getElementById("output");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop page reload
+
+      const formData = new FormData(form);
+
+      // Build output HTML
+      let resultHTML = "<h2>Form Submission Result</h2>";
+      resultHTML += `<p><strong>First Name:</strong> ${formData.get("FirstName")}</p>`;
+      resultHTML += `<p><strong>Last Name:</strong> ${formData.get("LastName")}</p>`;
+      resultHTML += `<p><strong>Roll Number:</strong> ${formData.get("RollNumber")}</p>`;
+      resultHTML += `<p><strong>Gender:</strong> ${formData.get("Gender")}</p>`;
+      resultHTML += `<p><strong>Date of Birth:</strong> ${formData.get("DOB")}</p>`;
+      resultHTML += `<p><strong>Password:</strong> ${formData.get("PassWord")}</p>`;
+
+      output.innerHTML = resultHTML;
+      output.style.display = "block";
+    });
+  </script>
+  </body>
+</html>
